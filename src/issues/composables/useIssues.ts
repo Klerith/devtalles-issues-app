@@ -10,6 +10,8 @@ const getIssues = async( labels: string[], state: State ):Promise<Issue[]> => {
   const params = new URLSearchParams();
 
   if ( state ) params.append('state',state);
+  else params.append( 'state','all' );
+
   if ( labels.length > 0 ) {
     const labelsString = labels.join(',');
     params.append('labels',labelsString);
