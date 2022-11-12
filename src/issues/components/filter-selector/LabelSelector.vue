@@ -11,10 +11,13 @@ const { labelsQuery, toggleLabel, selectedLabels } = useLabels();
   <div class="q-mt-md">
     <LoaderSpinner v-if="labelsQuery.isLoading.value" size="50px" :thickness="1" :show-text="false" />
 
-    <q-chip v-else v-for="label of labelsQuery.data.value" :key="label.id" :style="{ color: `#${label.color}` }"
-      :outline="!selectedLabels.includes(label.name)" clickable @click="toggleLabel(label.name)">
-      {{ label.name }}
-    </q-chip>
+    <q-scroll-area v-else style="height: 500px;">
+      <q-chip v-for="label of labelsQuery.data.value" :key="label.id" :style="{ color: `#${label.color}` }"
+        :outline="!selectedLabels.includes(label.name)" clickable @click="toggleLabel(label.name)">
+        {{ label.name }}
+      </q-chip>
+    </q-scroll-area>
+
   </div>
 
 
